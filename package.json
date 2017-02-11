@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "start": "nodemon ./server.js"
+    "start": "nodemon ./server.js",
+    "test": "mocha ./test/**/*.spec.js"
   },
   "dependencies": {
     "express": "~4.14.1",
@@ -12,7 +13,9 @@
   },
   "devDependencies": {
     "chai": "~3.5.0",
+    "cheerio": "^0.22.0",
     "mocha": "~3.2.0",
+    "nock": "^9.0.5",
     "nodemon": "^1.11.0",
     "supertest": "~3.0.0"
   }
