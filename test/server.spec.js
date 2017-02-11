@@ -19,11 +19,6 @@ describe('HTML serving app', () => {
         "spec_title": "RFC7231#6.3.1",
         "spec_href": "https://tools.ietf.org/html/rfc7231#section-6.3.1"
       });
-
-    // invalid endpoint, not found:
-    nock('http://localhost:8080')
-      .get('/code/600')
-      .reply(404);
 	});
 
   afterEach(() => {
@@ -44,16 +39,6 @@ describe('HTML serving app', () => {
 				expect(nock.isDone());
 			});
 	});
-
-	it('returns a 404 if there is no such code in the api', () => {
-		return request(server)
-			.get('/600')
-			.expect(404)
-			.expect(() => {
-				expect(nock.isDone())
-			});
-	});
-
 
 	it('renders templates that live in the views directory, and correctly renders the data into the view, too', () => {
     return request(server)
