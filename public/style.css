@@ -1,0 +1,39 @@
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  font-family: "Josefin Sans", "Lucida Grande", Helvetica, Arial, sans-serif;
+  font-weight: lighter;
+  background: #41295a;
+  background: -webkit-linear-gradient(to left, #41295a , #2F0743);
+  background: linear-gradient(to left, #41295a , #2F0743);
+  color: white;
+}
+
+.code {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+h1 {
+  font-size: 18vw;
+  font-weight: bold;
+  margin: 0;
+}
+
+h2 {
+  font-size: 8vw;
+  font-weight: 100;
+  margin: 0;
+}
+
+.description {
+  font-size: 3vw;
+  margin: 5vh 15vw;
+  text-align: center;
+}
