@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "start": "nodemon ./server.js",
-    "test": "npm run lint && mocha ./test/**/*.spec.js",
+    "test": "mocha ./test/**/*.spec.js",
+    "ci": "npm run lint && npm test",
     "lint": "eslint ."
   },
   "dependencies": {
