@@ -41,7 +41,10 @@ Currently, when you navigate to http://localhost:4000, you're greeted with a rud
 
 ### Steps
 
-1. Create a new endpoint http://localhost:8080/code in [Code-Your-Future/node-status-code-api](https://github.com/Code-Your-Future/node-status-code-api) that returns a list of status `code`s and `phrase`s. For each status code object in the list, dynamically add a new field `image`, that points to the corresponding status code in the https://http.cat service, so that the response becomes:
+#### 1. New API: `/code`
+
+Create a new endpoint http://localhost:8080/code in [Code-Your-Future/node-status-code-api](https://github.com/Code-Your-Future/node-status-code-api) that returns a list of status `code`s and `phrase`s. For each status code object in the list, dynamically add a new field `image`, that points to the corresponding status code in the https://http.cat service, so that the response becomes: 
+
 ```js
 [
   {
@@ -57,8 +60,14 @@ Currently, when you navigate to http://localhost:4000, you're greeted with a rud
   ...
 ]
 ```
-2. Create a new [Handlebars](http://handlebarsjs.com/) template in the website repository that displays the code, phrase and the cat image for each object in the response. Clicking the cat should take the user to the corresponding status detail page.
-3. Create a new route `/` in the website that fetches the cats from the new API endpoint defined in step 1, and renders them using the template created in step 2.
+
+#### 2. New template: `index`
+
+Create a new [Handlebars](http://handlebarsjs.com/) template in the website repository that displays the code, phrase and the cat image for each object in the response. Clicking the cat should take the user to the corresponding status detail page.
+
+#### 3. New Website Route: `/`:
+
+Create a new route `/` in the website that fetches the cats from the new API endpoint defined in step 1, and renders them using the template created in step 2.
 
 ## Stretch goals
 
