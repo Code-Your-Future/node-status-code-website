@@ -37,25 +37,25 @@ HTML serving app
 
 Currently, when you navigate to http://localhost:4000, you're greeted with a rude `Cannot GET /`. Your job is to make an index page that lists all the available status codes... as cats.
 
-![ok](https://http.cat/200)
+![ok](https://http.cat/200.jpg)
 
 ### Steps
 
 #### 1. New API: `/code`
 
-Create a new endpoint http://localhost:8080/code in [Code-Your-Future/node-status-code-api](https://github.com/Code-Your-Future/node-status-code-api) that returns a list of status `code`s and `phrase`s. For each status code object in the list, dynamically add a new field `image`, that points to the corresponding status code in the https://http.cat service, so that the response becomes: 
+Create a new endpoint http://localhost:8080/code in [Code-Your-Future/node-status-code-api](https://github.com/Code-Your-Future/node-status-code-api) that returns a list of status `code`s and `phrase`s. For each status code object in the list, dynamically add a new field `image`, that points to the corresponding status code in the https://http.cat service, so that the response becomes:
 
 ```js
 [
   {
     "code": "200",
     "phrase": "OK",
-    "image": "https://http.cat/200"
+    "image": "https://http.cat/200.jpg"
   },
   {
     "code": "201",
     "phrase": "Created",
-    "image": "https://http.cat/201"
+    "image": "https://http.cat/201.jpg"
   },
   ...
 ]
