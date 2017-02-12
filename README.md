@@ -21,6 +21,15 @@ To achieve this goal, you'll have to complete the following steps.
 2. In the route endpoint, fetch the status code data from the API
 3. Render the page using the [Handlebars](http://handlebarsjs.com/) template in [views/code.hbs](views/code.hbs). The Handlebars [renderer](https://expressjs.com/en/api.html#app.render) has been already configured.
 
+## Stretch goal
+
+Next, we'll add some additional information about the status code to the page. We'll use the [numbersapi.com](http://numbersapi.com) service.
+
+1. In the Express route handler, fetch the information that corresponds to the status code, e.g. for `200 OK`, fetch http://numbersapi.com/200.
+2. Add the new information into the [template](views/code.hbs).
+
+Hint: The trick is to execute two API calls simultaneously, and wait for both to complete before rendering the template. [Promise.all](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Promise/all) might be helpful.
+
 ### TDD
 
 This repository contains a set of tests, which check that the app works correctly. Run `npm test` to check if things work as expected. When the application works correctly, you should see something like:
