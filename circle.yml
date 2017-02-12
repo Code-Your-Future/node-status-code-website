@@ -4,7 +4,7 @@ general:
       - master
 test:
   override:
-    - npm ci
+    - npm run ci
 machine:
   node:
     version: 6.1.0
