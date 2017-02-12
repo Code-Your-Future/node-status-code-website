@@ -32,3 +32,38 @@ HTML serving app
 
 3 passing (121ms)
 ```
+
+## Homework
+
+Currently, when you navigate to http://localhost:4000, you're greeted with a rude `Cannot GET /`. Your job is to make an index page that lists all the available status codes... as cats.
+
+![ok](https://http.cat/200)
+
+### Steps
+
+1. Create a new endpoint http://localhost:8080/code in [Code-Your-Future/node-status-code-api](https://github.com/Code-Your-Future/node-status-code-api) that returns a list of status `code`s and `phrase`s. For each status code object in the list, dynamically add a new field `image`, that points to the corresponding status code in the https://http.cat service, so that the response becomes:
+```js
+[
+  {
+    "code": "200",
+    "phrase": "OK",
+    "image": "https://http.cat/200"
+  },
+  {
+    "code": "201",
+    "phrase": "Created",
+    "image": "https://http.cat/201"
+  },
+  ...
+]
+```
+2. Create a new [Handlebars](http://handlebarsjs.com/) template in the website repository that displays the code, phrase and the cat image for each object in the response. Clicking the cat should take the user to the corresponding status detail page.
+3. Create a new route `/` in the website that fetches the cats from the new API endpoint defined in step 1, and renders them using the template created in step 2.
+
+## Stretch goals
+
+To make the website doubly awesome, consider doing one or more of the following stretch homework goals:
+
+1. Write tests for the new API endpoint and the website route
+2. Make the cat index page into a responsive grid using Flexbox CSS
+3. Write a `/search/?query=...` endpoint that receives a query parameter and returns a list of all status codes whose `phrase` partially matches the query, e.g. `/search/?query=bad` should return `400 Bad Request` and `503 Bad Gateway`.
