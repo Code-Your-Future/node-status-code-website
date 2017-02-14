@@ -17,7 +17,7 @@ app.get('/:code', function (req,res) {
 	const promise2 = fetch(url2).then((res) => res.text());
 	Promise.all([promise1,promise2])
 	.then(function ([json,text]) {
-		res.render('code', {code:json})
+		res.render('code', {code:json, text:text})
 	})
 	.catch(function (err) {
 		console.error(err)
