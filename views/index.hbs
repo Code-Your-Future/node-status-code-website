@@ -1,1 +1,18 @@
-index.hbs
+<!Doctype html>
+<html>
+<head>
+  <title>All Status Code</title>
+</head>
+<body>
+  <header>
+    <h5>All Status Codes</h5>
+  </header>  
+    {{#each content}}
+  <div>
+    <div>{{code}}</div>
+    <div>{{phrase}}</div>
+    <div><a target='blank' href='{{image}}'> {{image}}</a></div>
+  </div>
+  {{/each}}
+</body>
+</html>

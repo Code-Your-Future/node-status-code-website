@@ -10,7 +10,7 @@ describe('HTML serving app', () => {
   // set up some mock endpoints using `nock`
 	beforeEach(() => {
     // valid api endpoint, ok:
-    nock('http://localhost:8080')
+    nock('http://localhost:4000')
       .get('/code/200')
       .reply(200, {
         "code": "200",
@@ -40,6 +40,7 @@ describe('HTML serving app', () => {
 			});
 	});
 
+  
 	it('renders templates that live in the views directory, and correctly renders the data into the view, too', () => {
     return request(server)
 			.get('/200')

@@ -33,9 +33,11 @@ app.get('/', (req, res) => {
   fetch('http://localhost:3000/code')
   .then(response => response.json())
   .then((allCode) => {
-    res.send(allCode);
+    //res.send(allCode);
+    res.render('index', { 'content': allCode });
   });
 });
+
 app.listen(4000);
 
 module.exports = app;
