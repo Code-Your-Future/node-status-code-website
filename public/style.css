@@ -20,6 +20,14 @@ body {
   justify-content: center;
 }
 
+.index {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
 h1 {
   font-size: 18vw;
   font-weight: bold;
@@ -37,3 +45,4 @@ h2 {
   margin: 5vh 15vw;
   text-align: center;
 }
+
