@@ -41,7 +41,7 @@ app.get('/', (req,res)=>{
 
     })
     .then(function(response){
-    	res.render('index',response);
+    	res.render('index',{'content':response});
     })
 
     .catch(function(){

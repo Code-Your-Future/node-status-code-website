@@ -1,5 +1,9 @@
-<div class="index">
-  <h1>{{code}}</h1>
-  <h2>{{phrase}}</h2>
-  <a href=`\${code}`><img src={{image}}></a>
-</div>
+{{#each content}}
+ <div class="index">
+   <h3>{{code}}</h3>
+   <h4>{{phrase}}</h4>
+   <a href='{{image}}'><img src={{image}}/></a>
+ </div>
+{{/each}}
+
+  
