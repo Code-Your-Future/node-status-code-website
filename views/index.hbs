@@ -1,18 +1,15 @@
-<!Doctype html>
-<html>
-<head>
-  <title>All Status Code</title>
-</head>
-<body>
-  <header>
-    <h5>All Status Codes</h5>
-  </header>  
+  <div class='container'>
     {{#each content}}
-  <div>
-    <div>{{code}}</div>
-    <div>{{phrase}}</div>
-    <div><a target='blank' href='{{image}}'> {{image}}</a></div>
-  </div>
-  {{/each}}
-</body>
-</html>
+    <div class='items'>
+      <a target = "blank" href="{{rootEndPoint}}{{code}}">
+        <figure>
+          <img src="{{image}}"">
+        </figure>
+      </a>
+      <div class='discription'>
+        <h4><em> {{code}} </em></p>
+        <p><em> {{phrase}} </em></p>
+      </div>
+    </div>
+    {{/each}}
+  </div>  

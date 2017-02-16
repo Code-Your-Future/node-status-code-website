@@ -1,6 +1,7 @@
+
 html, body {
   height: 100%;
-  margin: 0;
+  width: 100%;
 }
 
 body {
@@ -37,3 +38,30 @@ h2 {
   margin: 5vh 15vw;
   text-align: center;
 }
+
+/* flex stuff   */
+
+figure img{
+  width: 100px;
+}
+
+.discription{
+  text-align: center;
+  color: black;
+}
+.container {
+  width:80%;
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.items{
+  flex: 0 1 calc(10% - 1em);
+  border: 1px black solid;
+  border-radius: 10px;
+  background-color: #E0E0E0;
+  margin-bottom: 10px;: 
+}
+
+

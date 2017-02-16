@@ -25,17 +25,27 @@ app.get('/:code', (req, res) => {
     });
   })
   .catch(() => {
-    res.send('Invalid Query, Page not found !');
+    res.send('<h3>Invalid Query, Page not found !<h3>');
   });
 });
 
 app.get('/', (req, res) => {
-  fetch('http://localhost:3000/code')
+  const rootEndPoint= 'http://localhost:3000/';
+  const badCode = ['203','205','226','407','501','505','308','102','428'];
+
+  fetch(rootEndPoint+'code')
   .then(response => response.json())
-  .then((allCode) => {
-    //res.send(allCode);
-    res.render('index', { 'content': allCode });
+  .then((allCode) => {    
+    const filterCode = allCode.filter(status => {
+      const pruneCode = status.code.substring(1);
+      const matchResult = badCode.indexOf(status.code);
+      return matchResult === -1 &&  pruneCode != 'xx'; 
+    });  
+    res.render('index', { 'rootEndPoint': rootEndPoint, 'content': filterCode });
+  }).catch(() => {
+    res.send('<h3> Page not found </h3>');
   });
+
 });
 
 app.listen(4000);
