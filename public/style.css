@@ -16,8 +16,9 @@ body {
   height: 100%;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: left;
   justify-content: center;
+  margin-bottom: 20px;
 }
 
 h1 {
