@@ -2,6 +2,8 @@ const express = require('express');
 const fetch = require('isomorphic-fetch');
 const path = require('path');
 
+const badCode = ['203','205','226','407','501','505','308','102','428'];
+
 const app = express();
 
 app.set('views', path.join(__dirname, 'views'));
@@ -10,30 +12,24 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/:code', (req, res) => {
   const code = req.params.code;
-  const promise1 = fetch('http://localhost:3000/code/' + code)
+  const promise1 = fetch(`http://localhost:3000/code/${code}`)
   .then(response => response.json());
-  const promise2 = fetch('http://numbersapi.com/' + code)
+  const promise2 = fetch(`http://numbersapi.com/${code}`)
   .then(response => response.text());
 
   Promise.all([promise1, promise2])
   .then((arr) => {
-    res.render('code', { 
-      'code': arr[0].code, 
-      'phrase': arr[0].phrase,
-      'description': arr[0].description, 
-      'fact': arr[1] 
-    });
-  })
-  .catch(() => {
-    res.send('<h3>Invalid Query, Page not found !<h3>');
-  });
+    res.render('code', {  'code': arr[0].code, 
+                          'phrase': arr[0].phrase,
+                          'description': arr[0].description, 
+                          'fact': arr[1] 
+                        });
+  }).catch(() => res.send('<h3>Invalid Query, Page not found !<h3>'));
 });
 
 app.get('/', (req, res) => {
   const rootEndPoint= 'http://localhost:3000/';
-  const badCode = ['203','205','226','407','501','505','308','102','428'];
-
-  fetch(rootEndPoint+'code')
+  fetch(`${rootEndPoint}code`)
   .then(response => response.json())
   .then((allCode) => {    
     const filterCode = allCode.filter(status => {
@@ -41,11 +37,8 @@ app.get('/', (req, res) => {
       const matchResult = badCode.indexOf(status.code);
       return matchResult === -1 &&  pruneCode != 'xx'; 
     });  
-    res.render('index', { 'rootEndPoint': rootEndPoint, 'content': filterCode });
-  }).catch(() => {
-    res.send('<h3> Page not found </h3>');
-  });
-
+    res.render('index', { 'rootEndPoint' : rootEndPoint, 'content' : filterCode });
+  }).catch(() => res.send('<h3> Page not found </h3>'));
 });
 
 app.listen(4000);
