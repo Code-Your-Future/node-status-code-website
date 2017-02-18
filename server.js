@@ -41,6 +41,25 @@ app.get('/', (req, res) => {
   });
 });
 
+app.get('/search/:search', (req, res) => {
+  const matching = req.params.search;
+  const filtervalue = new RegExp(matching, 'i');
+  const localhostUrl = 'http://localhost:8080/code';
+  fetch(localhostUrl, {
+    method: 'GET',
+  })
+  .then((apiRes) => {
+    apiRes.json()
+      .then((json) => {
+        const data = json.filter(value => value.phrase.match(filtervalue));
+        res.render('index', { codes: data });
+      });
+  })
+  .catch((err) => {
+    console.error(err);
+  });
+});
+
 app.listen(4000);
 
 module.exports = app;
