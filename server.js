@@ -31,10 +31,10 @@ app.get('/', (req, res) => {
     method: 'GET',
   })
   .then((apiRes) => {
-    apiRes.json()
-      .then((json) => {
-        res.render('index', { codes: json });
-      });
+    apiRes.json();
+  })
+  .then((json) => {
+    res.render('index', { codes: json });
   })
   .catch((err) => {
     console.error(err);
@@ -48,12 +48,10 @@ app.get('/search/:search', (req, res) => {
   fetch(localhostUrl, {
     method: 'GET',
   })
-  .then((apiRes) => {
-    apiRes.json()
-      .then((json) => {
-        const data = json.filter(value => value.phrase.match(filtervalue));
-        res.render('index', { codes: data });
-      });
+  .then(apiRes => apiRes.json())
+  .then((json) => {
+    const data = json.filter(value => value.phrase.match(filtervalue));
+    res.render('index', { codes: data });
   })
   .catch((err) => {
     console.error(err);
