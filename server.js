@@ -12,11 +12,11 @@ app.use(express.static(path.join(__dirname, 'public')));
 // add your routes here :)
 
 app.get('/:code', (req, res) => {
-  const url = `http://localhost:8080/code/${req.params.code}`;
-  const url2 = `http://numbersapi.com/${req.params.code}`;
-  const promise1 = fetch(url).then(resp => resp.json());
-  const promise2 = fetch(url2).then(resp => resp.text());
-  Promise.all([promise1, promise2])
+  const localhostUrl = `http://localhost:8080/code/${req.params.code}`;
+  const numbersApiUrl = `http://numbersapi.com/${req.params.code}`;
+  const localhostUrlPromise = fetch(localhostUrl).then(resp => resp.json());
+  const numbersApiUrlPromise = fetch(numbersApiUrl).then(resp => resp.text());
+  Promise.all([localhostUrlPromise, numbersApiUrlPromise])
   .then(([json, txt]) => {
     res.render('code', { code: json, text: txt });
   })
@@ -26,8 +26,8 @@ app.get('/:code', (req, res) => {
 });
 
 app.get('/', (req, res) => {
-  const url = 'http://localhost:8080/code';
-  fetch(url, {
+  const localhostUrl = 'http://localhost:8080/code';
+  fetch(localhostUrl, {
     method: 'GET',
   })
   .then((apiRes) => {
@@ -44,4 +44,3 @@ app.get('/', (req, res) => {
 app.listen(4000);
 
 module.exports = app;
-
