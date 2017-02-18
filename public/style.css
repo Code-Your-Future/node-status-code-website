@@ -12,7 +12,19 @@ body {
   background: linear-gradient(to left, #41295a , #2F0743);
   color: white;
 }
-
+.queryCode{
+  display: flex;
+}
+.queryCode h1{
+  font-size: 4vw;
+  font-weight: bold;
+  margin: auto;
+}
+.queryCode h2{
+  font-size: 2vw;
+  font-weight: bold;
+  margin: 0;
+}
 .code {
   align-items: center;
   display: flex;  

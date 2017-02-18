@@ -10,6 +10,18 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.get('/search/', (req, res) => {
+  const query = req.query.phrase;  
+  fetch(`http://localhost:3000/search/${query}`)
+  .then(response => response.json())
+  .then((codes) => {
+    const queryResult = codes.filter(({ code, phrase, description }) => (
+      { code, phrase, description }));
+    res.render('queryResult', { result: queryResult })
+  })
+  .catch(() => res.send('<h3>Invalid Query, Page not found !<h3>'));
+});
+
 app.get('/:code', (req, res) => {
   const code = req.params.code;
   const promise1 = fetch(`http://localhost:3000/code/${code}`)
@@ -32,12 +44,12 @@ app.get('/', (req, res) => {
   fetch(`${rootEndPoint}code`)
   .then(response => response.json())
   .then((allCode) => {    
-    const filterCode = allCode.filter(status => {
+    const filterCode = allCode.filter((status) => {
       const pruneCode = status.code.substring(1);
       const matchResult = badCode.indexOf(status.code);
-      return matchResult === -1 &&  pruneCode != 'xx'; 
+      return matchResult === -1 && pruneCode != 'xx'; 
     });  
-    res.render('index', { 'rootEndPoint' : rootEndPoint, 'content' : filterCode });
+    res.render('index', {'rootEndPoint' : rootEndPoint, 'content' : filterCode });
   }).catch(() => res.send('<h3> Page not found </h3>'));
 });
 
