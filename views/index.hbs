@@ -1,0 +1,11 @@
+<ul class="index">
+  {{#each codes}}
+  <li>
+    <h1>{{this.code}}</h1>
+    <h2>{{this.phrase}}</h2>
+    <a href="{{this.image}}">
+      <img src={{this.image}} />
+    </a>
+  </li>
+  {{/each}}
+</ul>

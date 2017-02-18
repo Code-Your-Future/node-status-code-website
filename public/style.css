@@ -37,3 +37,13 @@ h2 {
   margin: 5vh 15vw;
   text-align: center;
 }
+
+.index {
+  list-style-type: none;
+  text-align: center;
+}
+
+li {
+  padding: 20px;
+  border-bottom: black solid 5px;
+}
