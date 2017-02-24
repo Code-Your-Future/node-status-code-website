@@ -11,7 +11,7 @@ app.set('view engine', 'hbs');
 app.use(express.static(path.join(__dirname, 'public')));
 
 // add your routes here :)
-app.get('/:code', (req, res) => {
+app.get('/code/:code', (req, res) => {
 
   const { code } = req.params;
 
@@ -21,8 +21,8 @@ app.get('/:code', (req, res) => {
       const parsed = JSON.parse(body);
       if(parsed === {}) {return}
       return res.render('code', parsed);
-    }
-  })
+      }
+    })
   });
 
 app.listen(4000);
